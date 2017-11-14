@@ -2,7 +2,7 @@
 
 # This is an example that shows basic usage of list in python.
 
-from __future__ import division
+from __future__ import print_function
 
 my_list1 = [1,2,3]
 print(my_list1)
