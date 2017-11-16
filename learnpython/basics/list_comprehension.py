@@ -37,3 +37,10 @@ print(lst5)
 """The above example shows nested list comprehension, where the list object defined as z**2 which inturn takes the 
 value from the list which has the object defined as y**2 so that fo each value of y in the range(11), it squares the
 value and assign to z. So the final result is acutally referring to z**4 for the each value of z in the range(11)"""
+
+lst6 = [x for x in xrange(1,11) if x % 2 == 0]
+print(list(lst6))
+
+"""The above example shows building a list using comprehension with some condtion statement in the same list.
+since we are using xrange, the type will be xrange for lst, so we are casting lst6 as list type to return the values.
+We can have more and more mathematical expression to be included in the condition statment like this."""
