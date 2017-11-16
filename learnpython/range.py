@@ -2,7 +2,8 @@
 
 """This is an example that shows usage range() function in python.
 range allows us to create a list of numbers from a mentioned starting point to end point with a mentioned step size(
-which is default by 1)"""
+which is default by 1).
+contact : sarath_v@icloud.com"""
 
 from __future__ import print_function
 
@@ -10,7 +11,7 @@ print(range(0,10))                  # prints a list of value starting from 0 to 
 print(range(0,20,2))                # prints a list of value starting from 0 to 20, with a step size of 2, which means
                                     # all even number between 0 and 20
 
-start = 0
+start = 0			    # default start is 0, so you can mention range(11) - 0 to 10
 stop = 20                           # the list will contain values till stop, means excluding stop
 step = 2
 

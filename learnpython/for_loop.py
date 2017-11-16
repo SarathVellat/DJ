@@ -1,9 +1,9 @@
 #! /usr/bin/python
 
-# contact : sarath_v@icloud.com
-# This is python program that shows the usage of for loop.
-# for loop act as an iterator. It goes through range, sequence or any other iterable item and execute the mentioned
-# statements inside the loop.
+"""contact : sarath_v@icloud.com
+This is python program that shows the usage of for loop.
+for loop act as an iterator. It goes through range, sequence or any other iterable item and execute the mentioned
+statements inside the loop."""
 
 from __future__ import print_function
 from __future__ import division

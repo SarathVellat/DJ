@@ -1,7 +1,8 @@
 #! /usr/bin/python
 
-# This is a python program that shows usage of while loop.
-# While loop execute a statement or group of statements until a mentioned condition is met.
+"""This is a python program that shows usage of while loop.
+While loop execute a statement or group of statements until a mentioned condition is met.
+contact : sarath_v@icloud.com"""
 
 from __future__ import print_function
 
