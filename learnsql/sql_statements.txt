@@ -1,0 +1,307 @@
+# To change the temporary password of the root user.
+
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'cloCas1paq';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> 
+
+# To create a database.
+
+mysql> CREATE DATABASE testDB;
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+
+# Change the DataBase 
+
+mysql> USE testDB;
+Database changed
+
+mysql>
+
+# You have to select a database first before any operation.
+
+# To create a table.
+
+mysql> CREATE TABLE Persons
+    -> (
+    -> PersonID int,
+    -> LastName varchar(255),
+    -> FirstName varchar(255),
+    -> Address varchar(255),
+    -> City varchar(255)
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql>
+
+
+# SQL INSERT
+# ==========
+
+# To insert data into the created table. Note, for string values use single quote.
+
+mysql> INSERT INTO Persons (PersonID, LastName, FirstName, Address, City) VALUES (1, 'Vellat', 'Sarath', 'Homestead Road', 'Santa Clara');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+mysql> 
+mysql> 
+mysql> select * from Persons;
++----------+----------+-----------+----------------+-------------+
+| PersonID | LastName | FirstName | Address        | City        |
++----------+----------+-----------+----------------+-------------+
+|        1 | Vellat   | Sarath    | Homestead Road | Santa Clara |
++----------+----------+-----------+----------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+# If we are adding values to all the fields in the table then we dont need to mention the column, instead just follow the exact order for values.
+
+mysql> INSERT INTO Persons VALUES (2, 'Roy', 'Debanjana', 'Whitefield', 'Bangalore');INSERT INTO Persons VALUES (3, 'Krishna', 'Hari', 'Vadakkanthara', 'Palakkad')
+Query OK, 1 row affected (0.00 sec)
+
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+
+mysql>
+
+mysql> INSERT INTO Persons VALUES (2, 'Mishra', 'Asha', 'Whitefield', 'Bangalore');INSERT INTO Persons VALUES (1, 'P R', 'Rahul', 'Homestead Road', 'Santa Clara');INSERT INTO Persons VALUES (1, 'Ramachandran', 'Sarath', 'Homestead Road', 'Santa Clara');INSERT INTO Persons VALUES (1, 'M T', 'Vishnu', 'Homestead Road', 'Santa Clara');INSERT INTO Persons VALUES (1, 'John Kurian', 'Simson', 'Homestead Road', 'Santa Clara');
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+Query OK, 1 row affected (0.01 sec)
+
+Query OK, 1 row affected (0.00 sec)
+
+mysql> 
+
+# SQL SELECT
+# ==========
+
+mysql> SELECT * FROM Persons;
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        1 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        2 | Roy          | Debanjana | Whitefield     | Bangalore   |
+|        3 | Krishna      | Hari      | Vadakkanthara  | Palakkad    |
+|        2 | Mishra       | Asha      | Whitefield     | Bangalore   |
+|        1 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
+|        1 | M T          | Vishnu    | Homestead Road | Santa Clara |
+|        1 | John Kurian  | Simson    | Homestead Road | Santa Clara |
++----------+--------------+-----------+----------------+-------------+
+8 rows in set (0.00 sec)
+
+mysql> 
+
+# To select only a particular field.
+
+mysql> SELECT FirstName FROM Persons;
++-----------+
+| FirstName |
++-----------+
+| Sarath    |
+| Debanjana |
+| Hari      |
+| Asha      |
+| Rahul     |
+| Sarath    |
+| Vishnu    |
+| Simson    |
++-----------+
+8 rows in set (0.00 sec)
+
+mysql> 
+
+
+
+
+
+# select distinct is to get only different values (it avoids duplicate vales)
+
+mysql> SELECT DISTINCT City from Persons;
++-------------+
+| City        |
++-------------+
+| Santa Clara |
+| Bangalore   |
+| Palakkad    |
++-------------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+mysql> SELECT COUNT(DISTINCT City) FROM Persons;
++----------------------+
+| COUNT(DISTINCT City) |
++----------------------+
+|                    3 |
++----------------------+
+1 row in set (0.01 sec)
+
+mysql> 
+
+mysql> SELECT COUNT(DISTINCT FirstName) FROM Persons;
++---------------------------+
+| COUNT(DISTINCT FirstName) |
++---------------------------+
+|                         7 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+# To see different field in a table and their datatype.
+
+mysql> SHOW FIELDS FROM testDB.Persons;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| PersonID  | int(11)      | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| Address   | varchar(255) | YES  |     | NULL    |       |
+| City      | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> SHOW COLUMNS FROM testDB.Persons;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| PersonID  | int(11)      | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| Address   | varchar(255) | YES  |     | NULL    |       |
+| City      | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> EXPLAIN testDB.Persons;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| PersonID  | int(11)      | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| Address   | varchar(255) | YES  |     | NULL    |       |
+| City      | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+mysql> DESCRIBE testDB.Persons;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| PersonID  | int(11)      | YES  |     | NULL    |       |
+| LastName  | varchar(255) | YES  |     | NULL    |       |
+| FirstName | varchar(255) | YES  |     | NULL    |       |
+| Address   | varchar(255) | YES  |     | NULL    |       |
+| City      | varchar(255) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+# SQL WHERE
+# ==========
+
+# where clause is used to filer desired records.
+
+mysql> select * from Persons where City='Santa Clara';
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        1 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        1 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
+|        1 | M T          | Vishnu    | Homestead Road | Santa Clara |
+|        1 | John Kurian  | Simson    | Homestead Road | Santa Clara |
++----------+--------------+-----------+----------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select * from Persons where LastName='Vellat';
++----------+----------+-----------+----------------+-------------+
+| PersonID | LastName | FirstName | Address        | City        |
++----------+----------+-----------+----------------+-------------+
+|        1 | Vellat   | Sarath    | Homestead Road | Santa Clara |
++----------+----------+-----------+----------------+-------------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+# Like in INSERT, even in WHERE for strings we use single quotes.
+
+mysql> select * from Persons where PersonID=3;
++----------+----------+-----------+---------------+----------+
+| PersonID | LastName | FirstName | Address       | City     |
++----------+----------+-----------+---------------+----------+
+|        3 | Krishna  | Hari      | Vadakkanthara | Palakkad |
++----------+----------+-----------+---------------+----------+
+1 row in set (0.00 sec)
+
+mysql> 
+
+
+# SQL AND, OR, NOT
+# ================
+
+mysql> select * from Persons where City='Santa Clara' AND FirstName LIKE 'Sarath';
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        1 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
++----------+--------------+-----------+----------------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+mysql> select * from Persons where City='Santa Clara' OR FirstName LIKE 'Hari';
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        1 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        3 | Krishna      | Hari      | Vadakkanthara  | Palakkad    |
+|        1 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
+|        1 | M T          | Vishnu    | Homestead Road | Santa Clara |
+|        1 | John Kurian  | Simson    | Homestead Road | Santa Clara |
++----------+--------------+-----------+----------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql> 
+
+
+mysql> select * from Persons where NOT FirstName LIKE 'Sarath';
++----------+-------------+-----------+----------------+-------------+
+| PersonID | LastName    | FirstName | Address        | City        |
++----------+-------------+-----------+----------------+-------------+
+|        2 | Roy         | Debanjana | Whitefield     | Bangalore   |
+|        3 | Krishna     | Hari      | Vadakkanthara  | Palakkad    |
+|        2 | Mishra      | Asha      | Whitefield     | Bangalore   |
+|        1 | P R         | Rahul     | Homestead Road | Santa Clara |
+|        1 | M T         | Vishnu    | Homestead Road | Santa Clara |
+|        1 | John Kurian | Simson    | Homestead Road | Santa Clara |
++----------+-------------+-----------+----------------+-------------+
+6 rows in set (0.00 sec)
+
+mysql>
