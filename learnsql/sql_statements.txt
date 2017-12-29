@@ -1,10 +1,28 @@
 # To change the temporary password of the root user.
 
 
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'cloCas1paq';
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '<ur_password_string>';
 Query OK, 0 rows affected (0.02 sec)
 
-mysql> 
+mysql>
+
+# To login :
+
+Saraths-MacBook-Air:bin sarathvellat$ ./mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 4
+Server version: 5.7.20 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2017, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql>
 
 # To create a database.
 
@@ -17,6 +35,35 @@ mysql>
 
 mysql> USE testDB;
 Database changed
+
+mysql>
+
+# to list available databases :
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| testDB             |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql>
+
+# to show available tables in one databases :
+
+mysql> show tables;
++------------------+
+| Tables_in_testdb |
++------------------+
+| Persons          |
++------------------+
+1 row in set (0.01 sec)
 
 mysql>
 
@@ -35,6 +82,10 @@ mysql> CREATE TABLE Persons
 Query OK, 0 rows affected (0.04 sec)
 
 mysql>
+
+VARCHAR, if we specify it as VARCHAR(255), that means the column will reserve 1 byte + lenght of the string. 1 byte
+indicates how long the string is. 1 byte = 0 to 255 values can be stored. So to store value more than 255 values, we need
+2 bytes ( 2 to power of 16 which is 65536.
 
 
 # SQL INSERT
@@ -100,7 +151,33 @@ mysql> SELECT * FROM Persons;
 +----------+--------------+-----------+----------------+-------------+
 8 rows in set (0.00 sec)
 
-mysql> 
+mysql>
+
+# inserting data in only desired fields.
+
+mysql> INSERT INTO Persons(PersonID, LastName, FirstName, Address) VALUES(33, 'T K', 'Sasidharan', 'Vadakkanthara');
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql>
+mysql> select * from persons;
++----------+--------------+------------+----------------+-------------+
+| PersonID | LastName     | FirstName  | Address        | City        |
++----------+--------------+------------+----------------+-------------+
+|        1 | Vellat       | Sarath     | Homestead Road | Santa Clara |
+|        2 | Roy          | Debanjana  | Whitefield     | Bangalore   |
+|        3 | Krishna      | Hari       | Vadakkanthara  | Palakkad    |
+|        2 | Mishra       | Asha       | Whitefield     | Bangalore   |
+|        1 | P R          | Rahul      | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath     | Homestead Road | Santa Clara |
+|        1 | M T          | Vishnu     | Homestead Road | Santa Clara |
+|        1 | John Kurian  | Simson     | Homestead Road | Santa Clara |
+|       32 | Vellat       | Radha      | Vadakkanthara  | Palakkad    |
+|       33 | T K          | Sasidharan | Vadakkanthara  | NULL        |
++----------+--------------+------------+----------------+-------------+
+10 rows in set (0.00 sec)
+
+mysql>
 
 # To select only a particular field.
 
@@ -305,3 +382,243 @@ mysql> select * from Persons where NOT FirstName LIKE 'Sarath';
 6 rows in set (0.00 sec)
 
 mysql>
+
+# ORDER BY
+# ========
+# sorts the records in ascending order by default. To sort the records in descending order, use the DESC keyword
+
+mysql> select * from Persons order by FirstName;
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        2 | Mishra       | Asha      | Whitefield     | Bangalore   |
+|        2 | Roy          | Debanjana | Whitefield     | Bangalore   |
+|        3 | Krishna      | Hari      | Vadakkanthara  | Palakkad    |
+|        1 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        1 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
+|        1 | John Kurian  | Simson    | Homestead Road | Santa Clara |
+|        1 | M T          | Vishnu    | Homestead Road | Santa Clara |
++----------+--------------+-----------+----------------+-------------+
+8 rows in set (0.00 sec)
+
+mysql>
+
+mysql> select * from Persons order by FirstName DESC;
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        1 | M T          | Vishnu    | Homestead Road | Santa Clara |
+|        1 | John Kurian  | Simson    | Homestead Road | Santa Clara |
+|        1 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
+|        1 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        3 | Krishna      | Hari      | Vadakkanthara  | Palakkad    |
+|        2 | Roy          | Debanjana | Whitefield     | Bangalore   |
+|        2 | Mishra       | Asha      | Whitefield     | Bangalore   |
++----------+--------------+-----------+----------------+-------------+
+8 rows in set (0.02 sec)
+
+mysql>
+
+# we can use this to sort by multiple fields.
+
+mysql> select * from Persons order by City, FirstName;
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        2 | Mishra       | Asha      | Whitefield     | Bangalore   |
+|        2 | Roy          | Debanjana | Whitefield     | Bangalore   |
+|        3 | Krishna      | Hari      | Vadakkanthara  | Palakkad    |
+|        1 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        1 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
+|        1 | John Kurian  | Simson    | Homestead Road | Santa Clara |
+|        1 | M T          | Vishnu    | Homestead Road | Santa Clara |
++----------+--------------+-----------+----------------+-------------+
+8 rows in set (0.01 sec)
+
+mysql>
+mysql>
+mysql> select * from Persons order by City DESC, FirstName ASC;
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        1 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        1 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        1 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
+|        1 | John Kurian  | Simson    | Homestead Road | Santa Clara |
+|        1 | M T          | Vishnu    | Homestead Road | Santa Clara |
+|        3 | Krishna      | Hari      | Vadakkanthara  | Palakkad    |
+|        2 | Mishra       | Asha      | Whitefield     | Bangalore   |
+|        2 | Roy          | Debanjana | Whitefield     | Bangalore   |
++----------+--------------+-----------+----------------+-------------+
+8 rows in set (0.01 sec)
+
+mysql>
+
+# NULL VALUE
+  ==========
+A field with no value is called a field with NULL VALUE. It is different from zero value. This is created when someone
+add or update a record without any value on a particular field. We cannot use any comparison operators to verify if a
+field value is NULL or not. We need to use IS NULL / IS NOT NULL keywords for this.
+
+mysql> select * from persons where CITY IS NULL;
++----------+----------+------------+---------------+------+
+| PersonID | LastName | FirstName  | Address       | City |
++----------+----------+------------+---------------+------+
+|       33 | T K      | Sasidharan | Vadakkanthara | NULL |
++----------+----------+------------+---------------+------+
+1 row in set (0.07 sec)
+
+mysql>
+
+mysql> select FirstName from persons where CITY is null;
++------------+
+| FirstName  |
++------------+
+| Sasidharan |
++------------+
+1 row in set (0.01 sec)
+
+mysql>
+
+mysql> select FirstName from persons where CITY is not null;
++-----------+
+| FirstName |
++-----------+
+| Sarath    |
+| Debanjana |
+| Hari      |
+| Asha      |
+| Rahul     |
+| Sarath    |
+| Vishnu    |
+| Simson    |
+| Radha     |
++-----------+
+9 rows in set (0.00 sec)
+
+mysql>
+
+# UPDATE
+========
+
+To update a record.
+
+
+mysql> select * from persons where FirstName = 'Sasidharan'
+    -> ;
++----------+----------+------------+---------------+------+
+| PersonID | LastName | FirstName  | Address       | City |
++----------+----------+------------+---------------+------+
+|       33 | T K      | Sasidharan | Vadakkanthara | NULL |
++----------+----------+------------+---------------+------+
+1 row in set (0.01 sec)
+
+mysql> UPDATE Persons SET City = 'Palakkad' where FirstName = 'Sasidharan'
+    -> ;
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from persons where FirstName = 'Sasidharan';
++----------+----------+------------+---------------+----------+
+| PersonID | LastName | FirstName  | Address       | City     |
++----------+----------+------------+---------------+----------+
+|       33 | T K      | Sasidharan | Vadakkanthara | Palakkad |
++----------+----------+------------+---------------+----------+
+1 row in set (0.00 sec)
+
+mysql>
+
+If we miss to give the where condition, then it will update all the fields with the value we are giving in SET. We can
+even update multiple records based on our WHERE condition.
+
+mysql> UPDATE Persons SET PersonID = 5 where city = 'Santa Clara';
+Query OK, 5 rows affected (0.01 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql>
+
+mysql> select * from Persons where city = 'Santa Clara';
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        5 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        5 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        5 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
+|        5 | M T          | Vishnu    | Homestead Road | Santa Clara |
+|        5 | John Kurian  | Simson    | Homestead Road | Santa Clara |
++----------+--------------+-----------+----------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql>
+
+# DELETE
+========
+
+To delete a record from a table :
+
+mysql> select * from persons where PersonID = 11;
++----------+----------+-----------+-----------+------------+
+| PersonID | LastName | FirstName | Address   | City       |
++----------+----------+-----------+-----------+------------+
+|       11 | Test1    | Test      | Sunnyvale | California |
+|       11 | Test2    | Test2     | Sunnyvale | NULL       |
++----------+----------+-----------+-----------+------------+
+2 rows in set (0.00 sec)
+
+mysql>
+
+mysql> DELETE FROM Persons where City = 'California';
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+
+mysql> select * from persons where PersonID = 11;
++----------+----------+-----------+-----------+------+
+| PersonID | LastName | FirstName | Address   | City |
++----------+----------+-----------+-----------+------+
+|       11 | Test2    | Test2     | Sunnyvale | NULL |
++----------+----------+-----------+-----------+------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> select * from persons where City IS NULL;
++----------+----------+-----------+-----------+------+
+| PersonID | LastName | FirstName | Address   | City |
++----------+----------+-----------+-----------+------+
+|       11 | Test2    | Test2     | Sunnyvale | NULL |
++----------+----------+-----------+-----------+------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> delete from Persons where City IS NULL;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from persons where City IS NULL;
+Empty set (0.00 sec)
+
+mysql>
+
+To delete all the records from a table
+
+Delete * from table_name;  OR Delete from table_name;
+
+mysql> select * from customers;
++------------+--------+----------+
+| CustomerID | Name   | City     |
++------------+--------+----------+
+|          1 | Sarath | Palakkad |
++------------+--------+----------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> delete from customers;
+Query OK, 1 row affected (0.00 sec)
+
+mysql>
+mysql> select * from customers;
+Empty set (0.00 sec)
