@@ -1,0 +1,73 @@
+variable :
+==========
+
+- Storage locations that have name.
+- Case sensitive (Upper Case is preferred).
+- should never start a number, or any other special characters.
+- it can start with lower or upper case letters or even underscore.
+
+    e.g :
+
+        MY_VAR = 'hello'
+        echo "hi $MY_VAR"
+        echo "hi ${MY_VAR}"
+        echo "hi ${MY_VAR}ooooo"
+test :
+
+Used for evaluation. [ur condition to test]
+
+This returns True if the condition is correct and return False if the condition is not correct. It returns false even
+if there is no condition to test.
+
+
+Common file operators :
+    - d FILE: True if the file is a directory.
+    - e FILE: True if the file exists.
+    - f FILE: True if the file exist and it is regular.
+    - r FILE: True if the the file is readable.
+    - s FILE: True if the file exist and not empty.
+    - w FILE: True if the file is writtable by you.
+    - x FILE: True if the file is executable by you.
+    - b FILE: True if the file is block special file.
+    - c FILE: True if the file is character special file.
+
+Common String operators :
+    - z string : True if the string is empty
+    - n string : True if the string is not empty
+    string 1 = string2
+    string 1 != string2
+
+Common Arithmetic operators :
+    eq - equals to
+    ne - not equals to
+    lt - less than
+    le - less than or equal to
+    gt - greater than
+    ge - greater than or equal to
+    
+
+
+Block files and Character files :
+=================================
+
+When we read or write data from files, the request will go to kernel-driver first. If the file is a regular file, then
+it will be handled by the file system driver and it is stored in zones of a disk or other storage media.When data is rea
+-d or write from device files the request is handled by the driver related to that device. Every file has an associated
+number that specify the related driver number.
+
+Block devices - the related hardware reads or writes a whole block at a time. Data from block devices can be cached and
+read back from cache and writes can be buffered.
+
+Character special files - character devices - like pipes, serial ports etc... Writing or reading to devices like this is
+an immediate action.. so when we write a byte character to this device, it might be immediately displayed on a screen
+or converted to sound in a serial port etc.. Reading a byte from this device might cause serial port to wait for input
+and then return a random output.. /dev/unrandom. Its called character file, because it handles each character individua-
+-lly.
+
+https://unix.stackexchange.com/questions/60034/what-are-character-special-and-block-special-files-in-a-unix-system
+
+Understanding /dev and subdir :
+
+https://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files/18534#18534
+
+
