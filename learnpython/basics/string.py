@@ -60,16 +60,17 @@ print(a)
 print(s)
 print(s.upper())           # comes under String properties for lower and upper case conversion
 print(s.lower())
-print(s.split())           # for Splitting - by default it goes with white spaces.
+print(s.split())           # for Splitting - by default it goes with white spaces. This returns a list
 print(s.split('o'))
+print(s.partition('l'))    # this returns a tuple of first half, first occurence of the separator and the last half
 
 
 #Advance features in python to deal with Strings.
 
 print(s.capitalize())      # capitalize -- make the first letter of the string as captital
 print(s.count('o'))        # count the occurence of a specified letter
-print(s.find('o'))         # find the index where the specified letter is present in a string
-print(s.find('l',3))       # find the index where the specified letter is present in a string between the mentioned start and end index.
+print(s.find('World'))     # find the index where the specified letter is present in a string
+print(s.find('l',6))       # find the index where the specified letter is present in a string between the mentioned start and end index.
 print(s.center(20,'*'))    # ceneter the string between the mentioned letter and make the whole output string of mentioned length.
 
 #is check methods
@@ -78,3 +79,6 @@ print(s.isalnum())  # True if all characters are either alphabetic or numerical 
 print(s.islower())  # True if all characters are lower case and atlest one character.
 print(s.isupper())  # True if all characters are upper case and atlest one character.
 print(s.isspace())  # True if all character in the string is whitespace.
+print(s.istitle())  # True if the string is title cased, like the first letter is Capital.
+print(s.isspace())  # True if all characters in the string are white space.
+print(s.endswith('World')) #True if the character is ending with the letter 'd'

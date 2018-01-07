@@ -20,7 +20,6 @@ print(my_list1[1])
 print(my_list2[1:])
 print(my_list1[:1])
 print(my_list1[-1])
-print[my_list1[::-1]]
 
 # list properties
 

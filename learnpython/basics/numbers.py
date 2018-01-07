@@ -25,7 +25,7 @@ mul = a * b
 
 div_normal = a/b
 
-#casting a variable as float so that the division also give float result -- classid division
+#casting a variable as float so that the division also give float result -- classic division
 div_casting = float (a)/b
 power = a**b
 
