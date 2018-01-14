@@ -622,3 +622,203 @@ Query OK, 1 row affected (0.00 sec)
 mysql>
 mysql> select * from customers;
 Empty set (0.00 sec)
+
+
+LIMIT
+======
+
+This is to get the specify number of records from a table.
+
+Incase of a table that has thousands of records, selecting all the records create performance issue and in such cases LIMIT in MySQL is helpul
+
+In case of SQL we can use TOP <number> or TOP PERCENT <percentage>
+
+
+mysql> select * from Persons where City='Santa Clara' Limit 3;
++----------+--------------+-----------+----------------+-------------+
+| PersonID | LastName     | FirstName | Address        | City        |
++----------+--------------+-----------+----------------+-------------+
+|        5 | Vellat       | Sarath    | Homestead Road | Santa Clara |
+|        5 | P R          | Rahul     | Homestead Road | Santa Clara |
+|        5 | Ramachandran | Sarath    | Homestead Road | Santa Clara |
++----------+--------------+-----------+----------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> select * from Persons Limit 3;
++----------+----------+-----------+----------------+-------------+
+| PersonID | LastName | FirstName | Address        | City        |
++----------+----------+-----------+----------------+-------------+
+|        5 | Vellat   | Sarath    | Homestead Road | Santa Clara |
+|        2 | Roy      | Debanjana | Whitefield     | Bangalore   |
+|        3 | Krishna  | Hari      | Vadakkanthara  | Palakkad    |
++----------+----------+-----------+----------------+-------------+
+3 rows in set (0.00 sec)
+
+mysql>
+
+
+MIN() and MAX()
+================
+
+MIN () : Function returns the smallest value of the selected column
+MAX () : Function returns the largest value of the selected column
+
+mysql> select MIN(PersonID) from Persons;
++---------------+
+| MIN(PersonID) |
++---------------+
+|             2 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+We can even store this smallest / largest value to a variable.
+
+mysql> select MIN(PersonID) AS SmallestID from Persons;
++------------+
+| SmallestID |
++------------+
+|          2 |
++------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> select MAX(PersonID) from Persons;
++---------------+
+| MAX(PersonID) |
++---------------+
+|            33 |
++---------------+
+1 row in set (0.01 sec)
+
+mysql>
+
+mysql> select MAX(PersonID) as LargestID from Persons;
++-----------+
+| LargestID |
++-----------+
+|        33 |
++-----------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+
+To change a field name in MySQL :
+
+mysql> show fields from Product;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| ProductID   | int(11)      | YES  |     | NULL    |       |
+| ProductName | varchar(255) | YES  |     | NULL    |       |
+| SupplieID   | int(11)      | YES  |     | NULL    |       |
+| CategoryID  | int(11)      | YES  |     | NULL    |       |
+| Unit        | varchar(255) | YES  |     | NULL    |       |
+| Price       | float        | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+mysql> alter table Product change SupplieID SupplierID varchar(255);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>
+
+mysql> show fields from Product;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| ProductID   | int(11)      | YES  |     | NULL    |       |
+| ProductName | varchar(255) | YES  |     | NULL    |       |
+| SupplierID  | varchar(255) | YES  |     | NULL    |       |
+| CategoryID  | int(11)      | YES  |     | NULL    |       |
+| Unit        | varchar(255) | YES  |     | NULL    |       |
+| Price       | float        | YES  |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql>
+
+
+
+Count, Avg, Sum :
+================
+
+mysql> select * from Product;
++-----------+-------------+------------+------------+----------+-------+
+| ProductID | ProductName | SupplierID | CategoryID | Unit     | Price |
++-----------+-------------+------------+------------+----------+-------+
+|         1 | chocolate   | 1          |          1 | 10 boxes | 23.45 |
+|         2 | Pencil      | 2          |          2 | 11 boxes |    11 |
+|         3 | Juice       | 3          |          1 | 3 litre  |    50 |
+|         4 | Pen         | 4          |          2 | 10 boxes |    10 |
+|         4 | Orange      | 4          |          1 | 10 Qty   |   100 |
++-----------+-------------+------------+------------+----------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select count(CategoryID) from Product;
++-------------------+
+| count(CategoryID) |
++-------------------+
+|                 5 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql>
+mysql> select count(ProductName) from Product where  CategoryID=1;
++--------------------+
+| count(ProductName) |
++--------------------+
+|                  3 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+
+mysql> select sum(Price) from Product;
++--------------------+
+| sum(Price)         |
++--------------------+
+| 194.45000076293945 |
++--------------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select sum(Price) from Product where CategoryID=2;
++------------+
+| sum(Price) |
++------------+
+|         21 |
++------------+
+1 row in set (0.00 sec)
+
+mysql>
+
+mysql> select avg(Price) from Product where CategoryID=2;
++------------+
+| avg(Price) |
++------------+
+|       10.5 |
++------------+
+1 row in set (0.00 sec)
+
+mysql>
+mysql> select avg(Price) from Product;
++-------------------+
+| avg(Price)        |
++-------------------+
+| 38.89000015258789 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql>
