@@ -1,7 +1,7 @@
 # To change the temporary password of the root user.
 
 
-mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '<ur_password_string>';
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY '<ur_password_strings>';
 Query OK, 0 rows affected (0.02 sec)
 
 mysql>
