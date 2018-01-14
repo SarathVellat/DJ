@@ -51,3 +51,7 @@ print('First : {z}' .format(z="inserted"))
 print('First : {x}, Second : {y}, Third : {x}' .format(x=1,y=2))
 print('First : {g}, Second : {z}' .format(g="hello",z="inserted"))
 
+print("The value of a is : {0}, the value of b is: {1}, the value of c is: {2}".format(a,b,c))
+
+print("The first value is: {e}, the second value is: {f} and the third value is: {g}".format(e='2', f='3', g='4'))
+

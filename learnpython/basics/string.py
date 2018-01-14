@@ -62,6 +62,8 @@ print(s.upper())           # comes under String properties for lower and upper c
 print(s.lower())
 print(s.split())           # for Splitting - by default it goes with white spaces. This returns a list
 print(s.split('o'))
+b = "a,b,c"
+print(b.split(','))        # split by comma is a very useful incase of a csv file (commma seperated files)
 print(s.partition('l'))    # this returns a tuple of first half, first occurence of the separator and the last half
 
 
@@ -82,3 +84,23 @@ print(s.isspace())  # True if all character in the string is whitespace.
 print(s.istitle())  # True if the string is title cased, like the first letter is Capital.
 print(s.isspace())  # True if all characters in the string are white space.
 print(s.endswith('World')) #True if the character is ending with the letter 'd'
+
+y = 'I am Sarath Sarath'
+print(y)
+print(y.count('Sarath'))      # String method count can be used both for letters and the words in a given string.
+print(y.find('Sarath'))
+
+z = " I am Sarath    "        # a string with white spaces before and after the contentts
+print(z)
+print(z.strip())              # strip removes the white spaces at the begininng and end of a string.
+
+li = ["a", "b", "c"]           # a list of string
+print(li)
+print(",".join(li))            # using join method we can combine the list elements into a single string
+print("|".join(li))
+print("7".join(li))
+
+li1 = ["a", "b", "c", 7]
+print(li1)
+# print(",".join(li1))  - This will not work, because here in this case, the string li1 is not just only of string, it
+# has a int component also '7'

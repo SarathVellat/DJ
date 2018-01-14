@@ -8,11 +8,11 @@ my_list1 = [1,2,3]
 print(my_list1)
 
 # difference of list from array is,it can have objects of different data types..
-#.. and there is no constrain of definite size.
+# .. and there is no constrain of definite size.
 
 my_list2 = [1, 'hello', (13.45)]
 print(my_list2)
-print(my_list2*2)                           #arithmetic expressions * can be used for printing the string multiple times
+print(my_list2*2)               # arithmetic expressions * can be used for printing the string multiple times
 
 # list indexing and slicing
 
@@ -23,13 +23,13 @@ print(my_list1[-1])
 
 # list properties
 
-my_list1 = my_list1 + ['add me']             #concatenation
+my_list1 = my_list1 + ['add me']       # concatenation
 print(my_list1)
 
-my_list2.append('add me at the end')         #appending -- this change is permanent to the list
+my_list2.append('add me at the end')     # appending this change is permanent to the list
 print(my_list2)
 
-my_list2.pop()                               # pop by default this will slice the last index and this change is permanent to the list
+my_list2.pop()                # pop by default this will slice the last index and this change is permanent to the list
 print(my_list2)
 print(my_list2.pop())
 print(my_list2)

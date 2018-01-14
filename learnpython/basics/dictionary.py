@@ -1,11 +1,12 @@
 #! /usr/bin/python
 
-#this is an example that shows usage of dictionary in python.
-#dictionay works based on mapping. Each key is mapped to their values unlike we do indexing in list.
+# this is an example that shows usage of dictionary in python.
+# dictionary works based on mapping. Each key is mapped to their values unlike we do indexing in list.
 
 
 dict1 = {'key1':123,'key2':'hello world','key3':13.45}
 print(dict1['key1'])
+print(dict1.get('key1'))    # we can use .get method to get the value of  a particular key(it should not be vice versa)
 
 #assigment of values.
 
