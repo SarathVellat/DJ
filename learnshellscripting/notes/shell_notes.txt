@@ -71,3 +71,60 @@ Understanding /dev and subdir :
 https://unix.stackexchange.com/questions/18239/understanding-dev-and-its-subdirs-and-files/18534#18534
 
 
+Functions :
+============
+
+DRY - Dont repeat yourself !
+
+Shell scripts are not pre-compiled. They are compiled during the runtime and hence we need to define functions before
+we use or call them at anypoint in the script.
+
+We can accept parameters to function like positional parameters $1, $2 etc... but here $0 is still the name of the script
+not the function name.
+
+Function allows us to :
+
+    - Write a block of code and use it multiple times
+    - Potentially reduce the length of your shell script
+    - maintain ur script by reducing the number of places u need to edit and troubleshoot.
+    - Since the shell script complie during runtime, a function should be defined before it is used.
+    - by default all variables are global in scope.
+    - if we use the keyword 'local' preceed a variable so that the variable is only available inside the function
+      in which it is defined.
+    - like commands, functions also have exit statuses. Like 'exit', we can use the keyword 'return' in function for
+      different exit statuses.
+
+
+ WildCards :
+ ==========
+
+ * - matches zero or more characters
+    *.txt
+    a*
+    a*.txt
+ ? - matches exactly one character
+    ?.txt
+    a?
+    a?.txt
+[] - chatacter class, matches any of the character included between the bracket. Matches exactly one of the character
+    ca[nt]
+    ca[nt]*
+
+[!] - matches any of the character NOT included between the brackets.
+     [!aeiou]*
+[a-g] - Ranges
+[3-5]
+
+Named Character classes  -- for most commonly used ranges.
+[[:alpha:]]    - matches alphabets both lower and upper
+[[:alphanum:]] - matches alphabets (lower and upper), numbers (integers and decimals)
+[[:digit:]]    - matches numbers in decimal [0-9]
+[[:lower:]]    - lower case alphabets
+[[:upper:]]    - upper case alphabets
+[[:space:]]    - white space, tabs, newe line characters etc
+
+Matching wild characters use "\" infront of it
+
+for e.g : Match all the files that ends with a question mark
+            ideally it should be *? (but ? itself is a wild card, so we need to use an escape character )
+            *\?

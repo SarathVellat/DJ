@@ -102,3 +102,14 @@ In this program # T(°F) = T(°C) × 9/5 + 32 - formula needs to be used for thi
 
 Refer : https://gist.github.com/gornostal/1f123aaf838506038710
 """
+
+#!/usr/bin/python
+
+A = ['ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF', 'ABC', 'ABC', 'EFG', 'CDE', 'EFG', 'DEF']
+
+for word in A:
+    print(A.count(word))
+
+
+
+

@@ -18,4 +18,3 @@ or a to z or _(underscore). No special characters allowed.
 
  - difference between list in python and array in C is, list can have items of different data type.
  - Tuples - it is read-only list, its size or elements cannot be changed -- immutable
- -

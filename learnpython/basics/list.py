@@ -43,6 +43,7 @@ print(my_list3.reverse())
 print(my_list3)
 print(my_list3.sort())
 print(my_list3)
+print(my_list3.count())
 
 #nesting lists
 
@@ -58,3 +59,4 @@ print(matrix)
 print(matrix[1][1])
 new_list = [row[0] for row in matrix]
 print(new_list)
+

@@ -59,3 +59,16 @@ print ("Hexa value of variable a is %s") %(hexa_value)
 print ("a to the power of b is %s") %(power_value)
 print ("Absolute value of variable q is %s") %(absolute_value)
 print ("Round value of after classic division is %s") %(round_value)
+
+
+""" Python supports all data types.
+Integers are implemented as C longs (which avoid the need for C's int, short and long) and it has capacity to store
+large numbers as our memory allows.
+
+If we suffix an integer with 'L', then it indicates it is a long integer (e.g : 99999999999999999999999999999999999L
+
+
+Floating point numbers are implemented as C doubles
+
+Octal number : base 8, and we need to suffix with 0
+hexa constants : Must start with a leading 0x or 0X"""
